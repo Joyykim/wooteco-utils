@@ -1,4 +1,4 @@
-# util-library
+# wooteco-utils
 
 ## 유틸 라이브러리 정리
 
