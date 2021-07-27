@@ -7,6 +7,9 @@ public class ScannerUtils {
 
     private static Scanner scanner = getScanner();
 
+    private ScannerUtils() {
+    }
+
     public static String nextLine() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextLine();
