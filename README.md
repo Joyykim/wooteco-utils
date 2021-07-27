@@ -2,6 +2,11 @@
 
 ## 유틸 라이브러리 정리
 
+### ScannerUtils.class
+- `nextLine()`
+  - 반환 타입 : `String`
+  - 콘솔입력 한줄 전체를 받아서 반환한다.
+
 ### RadomUtils.class
 - `randomInt(final int startInclusive, final int endExclusive)`
   - 반환 타입 : `int`
