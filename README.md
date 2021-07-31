@@ -2,17 +2,17 @@
 
 ## 유틸 라이브러리 정리
 
-### ScannerUtils.class
+### WoowaScanner.class
 - `nextLine()`
   - 반환 타입 : `String`
   - 콘솔입력 한줄 전체를 받아서 반환한다.
 
-### RadomUtils.class
-- `randomInt(final int startInclusive, final int endExclusive)`
+### Randoms.class
+- `pick(final int startInclusive, final int endInclusive)`
   - 반환 타입 : `int`
   - start, end 범위내의 랜덤한 **정수 하나**를 반환한다.
 
-- `randomPositive(final int startInclusive, final int endExclusive)`
+- `List<Integer> notDuplicatedPicks(final int startInclusive, final int endInclusive, final int count)`
   - 반환 타입 : `int`
   - start, end 범위내의 랜덤한 **정수(양수 혹은 0) 하나**를 반환한다.
   - 양수, 0만 인자로 받을 수 있다.
