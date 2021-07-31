@@ -37,8 +37,8 @@ public class Randoms {
     }
 
     private static void validateIntsRange(final int startInclusive, final int endInclusive, final int count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("count는 0보다 작을 수 없습니다.");
+        if (count <= 0) {
+            throw new IllegalArgumentException("count는 0보다 작거나 같을 수 없습니다.");
         }
 
         if (endInclusive - startInclusive + 1 < count) {
