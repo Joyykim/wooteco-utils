@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
-class ScannerUtilsTest {
+class WoowaScannerTest {
 
     private static final Duration SIMPLE_TEST_TIMEOUT = Duration.ofSeconds(1L);
 

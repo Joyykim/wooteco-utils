@@ -3,11 +3,11 @@ package com.woowahan.techcourse.utils;
 import java.lang.reflect.Field;
 import java.util.Scanner;
 
-public class ScannerUtils {
+public class WoowaScanner {
 
     private static Scanner scanner = getScanner();
 
-    private ScannerUtils() {
+    private WoowaScanner() {
     }
 
     public static String nextLine() {
