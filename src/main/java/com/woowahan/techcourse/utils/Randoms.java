@@ -43,7 +43,7 @@ public class Randoms {
         }
 
         if (end - start + 1 < count) {
-            throw new IllegalArgumentException("start에서 end의 범위보다 count가 작을 수 없습니다.");
+            throw new IllegalArgumentException("start에서 end의 범위보다 count가 클 수 없습니다.");
         }
     }
 
