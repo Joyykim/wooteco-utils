@@ -10,24 +10,38 @@ public class ScannerUtils {
     private ScannerUtils() {
     }
 
+    /**
+     * {@link Scanner#nextLine()} 결과를 반환하는 메소드.
+     * <p>
+     * <b>\n</b> 전까지의 사용자가 입력한 문자열을 반환한다.
+     *
+     * @return {@link Scanner#nextLine()}
+     * @throws java.util.NoSuchElementException 입력이 없을 경우 발생하는 예외
+     */
     public static String nextLine() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextLine();
     }
 
+    /**
+     * {@link Scanner#nextInt()} 결과를 반환하는 메소드.
+     * <p>
+     * 사용자가 입력한 숫자를 반환한다.
+     *
+     * @return {@link Scanner#nextInt()}
+     * @throws java.util.InputMismatchException 숫자가 아닌 다른 문자열을 입력했을 경우 발생하는 예외
+     */
     public static int nextInt() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextInt();
     }
 
-    // 스캐너가 닫혀있다면 새로운 스캐너 생성
     private static void makeNewScannerIfScannerIsClosed() {
         if (scanner == null || scannerIsClosed()) {
             scanner = getScanner();
         }
     }
 
-    // Scanner의 private 필드 sourceClosed를 리턴
     private static boolean scannerIsClosed() {
         try {
             Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
