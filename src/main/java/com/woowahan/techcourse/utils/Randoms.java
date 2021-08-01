@@ -21,7 +21,7 @@ public class Randoms {
         }
     }
 
-    public static List<Integer> picks(final int start, final int end, final int count) {
+    public static Set<Integer> picks(final int start, final int end, final int count) {
         validateIntsRange(start, end, count);
         List<Integer> randomInts = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class Randoms {
         }
 
         Collections.shuffle(randomInts);
-        return randomInts.subList(0, count);
+        return new HashSet<>(randomInts.subList(0, count));
     }
 
     private static void validateIntsRange(final int start, final int end, final int count) {
