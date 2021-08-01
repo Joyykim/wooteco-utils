@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class ScannersTest {
 
@@ -55,14 +54,6 @@ class ScannersTest {
     @DisplayName("SCANNER 기능 테스트")
     @Nested
     class ScannerInputTest {
-
-        @DisplayName("한개의 입력을 받으면, 한개의 입력을 출력한다.")
-        @ParameterizedTest
-        @ValueSource(strings = {"fortune", "seed", "joy"})
-        void singleInputTest(final String name) {
-            assertSimpleTest(() -> subject(name));
-            assertThat(getOutput()).contains(name);
-        }
 
         @DisplayName("두개의 입력을 받으면, 두개의 입력을 출력한다.")
         @ParameterizedTest
