@@ -18,7 +18,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class WoowaScannerTest {
+class ScannersTest {
 
     private static final Duration SIMPLE_TEST_TIMEOUT = Duration.ofSeconds(1L);
     private PrintStream standardOut;

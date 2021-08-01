@@ -9,14 +9,14 @@ import java.util.Scanner;
  * @since 1.0
  */
 
-public class WoowaScanner {
+public class Scanners {
 
     /**
      * 입력을 받아주는 java api
      */
     private static Scanner scanner = getScanner();
 
-    private WoowaScanner() {
+    private Scanners() {
     }
 
     /**
