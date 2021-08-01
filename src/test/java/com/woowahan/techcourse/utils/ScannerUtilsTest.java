@@ -17,6 +17,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 class ScannerUtilsTest {
@@ -63,8 +64,9 @@ class ScannerUtilsTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"1", "2", "3", "4"})
-        void 전체기능_테스트1(String i) {
-            assertSimpleTest(() -> subject(i, i, i));
+        void nextLineTest(String input) {
+            assertSimpleTest(() -> subject(input, input, input));
+            assertThat(getOutputLines()).containsExactly(input, input, input);
         }
     }
 }
