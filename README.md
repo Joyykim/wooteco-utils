@@ -25,8 +25,3 @@
 - `shuffle(final List<T> list)`
   - 반환 타입 : List<T>
   - 리스트의 원소들을 섞어서 반환한다.
-
-### DateUtils.class
-- `now()`
-  - 반환 타입 : `LocalDateTime`
-  - 현재 시간을 반환
