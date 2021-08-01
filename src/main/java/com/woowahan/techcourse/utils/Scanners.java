@@ -1,6 +1,8 @@
 package com.woowahan.techcourse.utils;
 
 import java.lang.reflect.Field;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Scanners {
@@ -10,11 +12,25 @@ public class Scanners {
     private Scanners() {
     }
 
+    /**
+     * 콘솔 입력을 받아 String형으로 반환합니다.
+     *
+     * @return 콘솔 입력 String
+     * @throws NoSuchElementException 입력이 없을 경우
+     */
     public static String nextLine() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextLine();
     }
 
+    /**
+     * 콘솔 입력을 받아 int형으로 반환합니다.
+     *
+     * @return 콘솔 입력을 int로 파싱한 결과
+     * @throws InputMismatchException
+     *         만약 입력이 <i>Integer</i> 형식에 맞지 않거나, out of range인 경우???
+     * @throws NoSuchElementException 입력이 없을 경우
+     */
     public static int nextInt() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextInt();
