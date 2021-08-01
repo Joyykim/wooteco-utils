@@ -41,7 +41,12 @@ public class Randoms {
     }
 
     private static void validateRange(final int startInclusive, final int endInclusive) {
-        if (endInclusive == Integer.MAX_VALUE || endInclusive - startInclusive >= Integer.MAX_VALUE) {
+
+        if (endInclusive == Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("끝값이 너무 큽니다. (스택 오버플로우 발생이 가능합니다)");
+        }
+
+        if (endInclusive - startInclusive >= Integer.MAX_VALUE){
             throw new IllegalArgumentException("입력값이 너무 큽니다.");
         }
 
@@ -80,12 +85,12 @@ public class Randoms {
     }
 
     private static void validateIntsRange(final int startInclusive, final int endInclusive, final int count) {
-        if (count <= 0) {
-            throw new IllegalArgumentException("count는 0보다 작거나 같을 수 없습니다.");
+        if (count < 0) {
+            throw new IllegalArgumentException("count는 0보다 작을 수 없습니다.");
         }
 
         if (endInclusive - startInclusive + 1 < count) {
-            throw new IllegalArgumentException("count가 (endInclusive - startInclusive + 1) 보다 클 수 없습니다.");
+            throw new IllegalArgumentException("start에서 end의 범위보다 count가 클 수 없습니다.");
         }
     }
 
