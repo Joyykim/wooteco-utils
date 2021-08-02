@@ -2,7 +2,7 @@
 
 ## 유틸 라이브러리 정리
 
-### WoowaScanner.class
+### Scanners.class
 
 - `nextInt()`
   - 반환 타입 : `int`
