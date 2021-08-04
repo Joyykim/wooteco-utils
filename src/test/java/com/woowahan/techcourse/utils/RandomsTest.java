@@ -3,11 +3,13 @@ package com.woowahan.techcourse.utils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,6 +33,30 @@ class RandomsTest {
                 // then
                 assertThat(randomInt).isBetween(start, end);
             }
+        }
+
+        @DisplayName("num1, num2, num3 을 원소로 지닌 리스트를 pick 메소드에 넣으면, 3개중 한개의 원소를 돌려받는다.")
+        @ParameterizedTest
+        @CsvSource({"100,200,300", "1,2,3", "-1,0,1"})
+        void pickNumbersTest(final int num1, final int num2, final int num3) {
+            List<Integer> numbers = Arrays.asList(num1, num2, num3);
+
+            for (int i = 0; i < 1000; ++i) {
+                // when
+                int randomInt = Randoms.pick(numbers);
+
+                // then
+                assertThat(numbers).contains(randomInt);
+            }
+        }
+
+        @DisplayName("비어 있는 원소리스트를 pick 메소드를 통해 랜덤한 숫자를 뽑는것을 시도하면, 예외가 발생한다.")
+        @Test
+        void pickNumbersExceptionTest() {
+            List<Integer> emptyNumbers = new ArrayList<>();
+            assertThatThrownBy(() -> {
+                Randoms.pick(emptyNumbers);
+            }).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("비어있는 numbers 로부터는 숫자를 뽑아낼 수 없습니다.");
         }
 
         @DisplayName("start가 end보다 같으면, 같은 숫자가 반환된다.")
