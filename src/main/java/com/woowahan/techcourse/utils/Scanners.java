@@ -10,11 +10,10 @@ import java.util.Scanner;
  * @version 1.0
  * @since 1.0
  */
-
 public class Scanners {
 
     /**
-     * 입력을 받아주는 java api
+     * 자바 표준 입력(콘솔 입력)을 받아주는 java api
      */
     private static Scanner scanner = getScanner();
 
@@ -24,11 +23,11 @@ public class Scanners {
     /**
      * {@link Scanner#nextLine()} 결과를 반환하는 메소드.
      * <p>
-     * <b>\n</b> 전까지의 사용자가 입력한 문자열을 반환한다.
+     * 개행문자 전까지의 사용자가 입력한 문자열을 반환한다.
      *
      * @return {@link Scanner#nextLine()}
-     * @throws NoSuchElementException scanner.nexLine() 에서 발생하는 예외
-     * @throws IllegalStateException  scanner.nexLine() 에서 발생하는 예외
+     * @throws NoSuchElementException scanner.nexLine()중 발생하는 예외
+     * @throws IllegalStateException  scanner.nexLine()중 발생하는 예외
      */
     public static String nextLine() {
         makeNewScannerIfScannerIsClosed();
@@ -38,7 +37,7 @@ public class Scanners {
     /**
      * {@link Scanner#nextInt()} 결과를 반환하는 메소드.
      * <p>
-     * 사용자가 입력한 숫자를 반환한다.
+     * 공백 전까지의 사용자가 입력한 숫자를 반환한다.
      *
      * @return {@link Scanner#nextInt()}
      * @throws InputMismatchException scanner.nextInt()중 발생하는 예외
@@ -48,6 +47,20 @@ public class Scanners {
     public static int nextInt() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextInt();
+    }
+
+    /**
+     * {@link Scanner#next()} 결과를 반환하는 메소드.
+     * <p>
+     * 공백 전까지의 사용자가 입력한 문자열를 반환한다.
+     *
+     * @return {@link Scanner#next()}
+     * @throws NoSuchElementException scanner.next()중 발생하는 예외
+     * @throws IllegalStateException  scanner.next()중 발생하는 예외
+     */
+    public static String next() {
+        makeNewScannerIfScannerIsClosed();
+        return scanner.next();
     }
 
     private static void makeNewScannerIfScannerIsClosed() {

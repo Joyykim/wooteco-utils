@@ -10,7 +10,6 @@ import java.util.Random;
  * @version 1.0
  * @since 1.0
  */
-
 public class Randoms {
 
     /**
@@ -49,7 +48,6 @@ public class Randoms {
      * @return List 안의 숫자중 랜덤하게 한개의 숫자
      * @throws IllegalArgumentException 비어있는 List를 인풋으로 받을시 발생한다.
      */
-
     public static int pick(final List<Integer> numbers) {
         validateNumbers(numbers);
         return numbers.get(pick(0, numbers.size() - 1));
@@ -94,7 +92,6 @@ public class Randoms {
      *                                  <li>가져오려는 숫자의 개수가 올바르지 않은경우, 발생한다.</li>
      *                                  </ul>
      */
-
     public static List<Integer> notDuplicatedPicks(final int startInclusive, final int endInclusive, final int count) {
         validateRange(startInclusive, endInclusive);
         validateIntsRange(startInclusive, endInclusive, count);
@@ -117,7 +114,6 @@ public class Randoms {
             throw new IllegalArgumentException("start에서 end의 범위보다 count가 클 수 없습니다.");
         }
     }
-
 
     /**
      * {@code List<T>}를 반환한다. 주어진 <b>List</b>를 {@link Collections#shuffle(List list)} 이용하여 셔플한 <b>List</b> 를 반환한다.
