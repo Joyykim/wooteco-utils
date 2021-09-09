@@ -31,10 +31,8 @@ public class Randoms {
      * @return 지정한 범위 안의 랜덤 숫자
      * @throws IllegalArgumentException 스택오버플로우가 터질 수 있는 경우, 발생한다. 잘못된 범위가 입력되는 경우, 발생한다.
      */
-    public static int pick(final int startInclusive, final int endInclusive) {
-
+    public static int pickNumberInRange(final int startInclusive, final int endInclusive) {
         validateRange(startInclusive, endInclusive);
-
         return startInclusive + RANDOM.nextInt(endInclusive - startInclusive + 1);
     }
 
@@ -48,9 +46,9 @@ public class Randoms {
      * @return List 안의 숫자중 랜덤하게 한개의 숫자
      * @throws IllegalArgumentException 비어있는 List를 인풋으로 받을시 발생한다.
      */
-    public static int pick(final List<Integer> numbers) {
+    public static int pickNumberInList(final List<Integer> numbers) {
         validateNumbers(numbers);
-        return numbers.get(pick(0, numbers.size() - 1));
+        return numbers.get(pickNumberInRange(0, numbers.size() - 1));
     }
 
     private static void validateNumbers(final List<Integer> numbers) {
@@ -92,7 +90,7 @@ public class Randoms {
      *                                  <li>가져오려는 숫자의 개수가 올바르지 않은경우, 발생한다.</li>
      *                                  </ul>
      */
-    public static List<Integer> notDuplicatedPicks(final int startInclusive, final int endInclusive, final int count) {
+    public static List<Integer> pickUniqueNumbersInRange(final int startInclusive, final int endInclusive, final int count) {
         validateRange(startInclusive, endInclusive);
         validateIntsRange(startInclusive, endInclusive, count);
         List<Integer> randomInts = new ArrayList<>();
@@ -117,7 +115,6 @@ public class Randoms {
 
     /**
      * {@code List<T>}를 반환한다. 주어진 <b>List</b>를 {@link Collections#shuffle(List list)} 이용하여 셔플한 <b>List</b> 를 반환한다.
-     *
      * <p>
      * Collections.shuffle 기능을 수행하고, 수행한 결과를 반환한다.
      * </p>

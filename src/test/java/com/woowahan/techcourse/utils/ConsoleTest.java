@@ -17,7 +17,7 @@ import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class ScannersTest {
+class ConsoleTest {
 
     private static final Duration SIMPLE_TEST_TIMEOUT = Duration.ofSeconds(1L);
     private PrintStream standardOut;

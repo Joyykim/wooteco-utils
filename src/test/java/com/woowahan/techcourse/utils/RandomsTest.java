@@ -28,7 +28,7 @@ class RandomsTest {
 
             for (int i = 0; i < 1000; ++i) {
                 // when
-                int randomInt = Randoms.pick(start, end);
+                int randomInt = Randoms.pickNumberInRange(start, end);
 
                 // then
                 assertThat(randomInt).isBetween(start, end);
@@ -43,7 +43,7 @@ class RandomsTest {
 
             for (int i = 0; i < 1000; ++i) {
                 // when
-                int randomInt = Randoms.pick(numbers);
+                int randomInt = Randoms.pickNumberInList(numbers);
 
                 // then
                 assertThat(numbers).contains(randomInt);
@@ -55,7 +55,7 @@ class RandomsTest {
         void pickNumbersExceptionTest() {
             List<Integer> emptyNumbers = new ArrayList<>();
             assertThatThrownBy(() -> {
-                Randoms.pick(emptyNumbers);
+                Randoms.pickNumberInList(emptyNumbers);
             }).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("비어있는 numbers 로부터는 숫자를 뽑아낼 수 없습니다.");
         }
 
@@ -64,7 +64,7 @@ class RandomsTest {
         @CsvSource({"1,1", "-1,-1", "2,2"})
         void pickSameTest(final int start, final int end) {
             // when
-            int randomInt = Randoms.pick(start, end);
+            int randomInt = Randoms.pickNumberInRange(start, end);
 
             // then
             assertThat(randomInt).isEqualTo(start);
@@ -76,7 +76,7 @@ class RandomsTest {
         @CsvSource({"1,0", "1,-1", "9,-2", "-1,-3"})
         void pickExceptionTest(final int start, final int end) {
             assertThatThrownBy(
-                () -> Randoms.pick(start, end)
+                () -> Randoms.pickNumberInRange(start, end)
             ).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("startInclusive가 endInclusive보다 클 수 없습니다.");
         }
 
@@ -85,7 +85,7 @@ class RandomsTest {
         @CsvSource({"1, 0x7fffffff", "0, 0x7fffffff"})
         void overFlowExceptionTest(final int start, final int end) {
             assertThatThrownBy(
-                () -> Randoms.pick(start, end)
+                () -> Randoms.pickNumberInRange(start, end)
             ).isExactlyInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -99,7 +99,7 @@ class RandomsTest {
         @CsvSource({"-1,-2,1", "1,-1,1", "1,0,1", "2,1,1", "3,1,1", "3,1,2", "3,1,3"})
         void notDuplicatedExceptionTest3(final int start, final int end) {
             assertThatThrownBy(
-                () -> Randoms.pick(start, end)
+                () -> Randoms.pickNumberInRange(start, end)
             ).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("startInclusive가 endInclusive보다 클 수 없습니다.");
         }
 
@@ -107,7 +107,7 @@ class RandomsTest {
         @ParameterizedTest
         @CsvSource({"-2,-1,1", "-1,1,1", "1,1,1", "1,2,1", "1,3,1", "1,3,2", "1,3,3"})
         void doubleInputTest(final int start, final int end, final int count) {
-            List<Integer> nonDuplicatedInts = Randoms.notDuplicatedPicks(start, end, count);
+            List<Integer> nonDuplicatedInts = Randoms.pickUniqueNumbersInRange(start, end, count);
 
             assertThat(nonDuplicatedInts).hasSize(count);
             for (final int num : nonDuplicatedInts) {
@@ -121,7 +121,7 @@ class RandomsTest {
         @CsvSource({"1,2,-1", "1,3,-2", "1,3,-3", "1,3,-4"})
         void notDuplicatedExceptionTest(final int start, final int end, final int wrongCount) {
             assertThatThrownBy(() -> {
-                Randoms.notDuplicatedPicks(start, end, wrongCount);
+                Randoms.pickUniqueNumbersInRange(start, end, wrongCount);
             }).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("count는 0보다 작을 수 없습니다.");
         }
 
@@ -130,7 +130,7 @@ class RandomsTest {
         @CsvSource({"1,1,2", "1,2,3", "1,3,4", "-1,3,6", "-1,4,7"})
         void notDuplicatedExceptionTest2(final int start, final int end, final int wrongCount) {
             assertThatThrownBy(() -> {
-                Randoms.notDuplicatedPicks(start, end, wrongCount);
+                Randoms.pickUniqueNumbersInRange(start, end, wrongCount);
             }).isExactlyInstanceOf(IllegalArgumentException.class).hasMessage("start에서 end의 범위보다 count가 클 수 없습니다.");
         }
     }

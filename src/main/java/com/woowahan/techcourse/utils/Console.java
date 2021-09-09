@@ -1,8 +1,8 @@
 package com.woowahan.techcourse.utils;
 
 import java.lang.reflect.Field;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -10,61 +10,33 @@ import java.util.Scanner;
  * @version 1.0
  * @since 1.0
  */
-public class Scanners {
+public class Console {
 
     /**
      * 자바 표준 입력(콘솔 입력)을 받아주는 java api
      */
     private static Scanner scanner = getScanner();
 
-    private Scanners() {
+    private Console() {
     }
 
     /**
      * {@link Scanner#nextLine()} 결과를 반환하는 메소드.
      * <p>
      * 개행문자 전까지의 사용자가 입력한 문자열을 반환한다.
+     * </p>
      *
      * @return {@link Scanner#nextLine()}
      * @throws NoSuchElementException scanner.nexLine()중 발생하는 예외
      * @throws IllegalStateException  scanner.nexLine()중 발생하는 예외
      */
-    public static String nextLine() {
+    public static String readLine() {
         makeNewScannerIfScannerIsClosed();
         return scanner.nextLine();
     }
 
-    /**
-     * {@link Scanner#nextInt()} 결과를 반환하는 메소드.
-     * <p>
-     * 공백 전까지의 사용자가 입력한 숫자를 반환한다.
-     *
-     * @return {@link Scanner#nextInt()}
-     * @throws InputMismatchException scanner.nextInt()중 발생하는 예외
-     * @throws NoSuchElementException scanner.nextInt()중 발생하는 예외
-     * @throws IllegalStateException  scanner.nextInt()중 발생하는 예외
-     */
-    public static int nextInt() {
-        makeNewScannerIfScannerIsClosed();
-        return scanner.nextInt();
-    }
-
-    /**
-     * {@link Scanner#next()} 결과를 반환하는 메소드.
-     * <p>
-     * 공백 전까지의 사용자가 입력한 문자열를 반환한다.
-     *
-     * @return {@link Scanner#next()}
-     * @throws NoSuchElementException scanner.next()중 발생하는 예외
-     * @throws IllegalStateException  scanner.next()중 발생하는 예외
-     */
-    public static String next() {
-        makeNewScannerIfScannerIsClosed();
-        return scanner.next();
-    }
-
     private static void makeNewScannerIfScannerIsClosed() {
-        if (scanner == null || scannerIsClosed()) {
+        if (Objects.isNull(scanner) || scannerIsClosed()) {
             scanner = getScanner();
         }
     }
